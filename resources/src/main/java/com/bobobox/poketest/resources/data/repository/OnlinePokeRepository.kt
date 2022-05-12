@@ -9,6 +9,7 @@ import com.bobobox.poketest.resources.data.source.remote.api.PokemonAPI
 import com.bobobox.poketest.resources.util.network.parse
 import com.tokopedia.core.util.network.Common
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
@@ -21,8 +22,8 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
-class OnlinePokeRepository @Inject constructor(val pokemonAPI: PokemonAPI) : IOnlinePokeRepository {
+class OnlinePokeRepository(val pokemonAPI: PokemonAPI) : IOnlinePokeRepository {
+
     override suspend fun getPokemonList(offset: Int): Common<Pair<List<Pokemon>, String>, Pair<Int, String>> = withContext(Dispatchers.IO) {
         return@withContext pokemonAPI.pokemonList(offset = offset).parse().fold(
             fnL = {

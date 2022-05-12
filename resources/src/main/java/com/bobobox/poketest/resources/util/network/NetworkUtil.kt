@@ -1,6 +1,10 @@
 package com.bobobox.poketest.resources.util.network
 
 import com.bobobox.poketest.resources.GlobalConfig.HOST_API
+import com.bobobox.poketest.resources.data.repository.OfflinePokeRepository
+import com.bobobox.poketest.resources.data.repository.OnlinePokeRepository
+import com.bobobox.poketest.resources.data.source.local.db.dao.FavPokemonDao
+import com.bobobox.poketest.resources.data.source.remote.api.PokemonAPI
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory

@@ -13,7 +13,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
-@HiltViewModel class HomeViewModel @Inject constructor(val onlineRepo : OnlinePokeRepository, val offlineRepo : OfflinePokeRepository) : BaseViewModel() {
+@HiltViewModel
+class HomeViewModel @Inject constructor(val onlineRepo : OnlinePokeRepository, val offlineRepo : OfflinePokeRepository) : BaseViewModel() {
     val monsters: LiveData<Pair<List<Pokemon>, Boolean>> get() = _monsters
     private val _monsters = MutableLiveData<Pair<List<Pokemon>, Boolean>>()
 

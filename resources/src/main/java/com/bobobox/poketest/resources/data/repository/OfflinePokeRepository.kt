@@ -14,8 +14,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
-class OfflinePokeRepository @Inject constructor(val favPokemon : FavPokemonDao) : IOfflinePokeRepository{
+class OfflinePokeRepository(val favPokemon : FavPokemonDao) : IOfflinePokeRepository{
 
     override suspend fun addFavoriteMonster(pokemon: FavPokemon) = withContext(Dispatchers.IO) {
         return@withContext favPokemon.add(pokemon)

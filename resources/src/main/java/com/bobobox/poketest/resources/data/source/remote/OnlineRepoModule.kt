@@ -5,6 +5,7 @@ import com.bobobox.poketest.resources.data.source.remote.api.PokemonAPI
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
 
@@ -13,11 +14,13 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object APIManager {
+object OnlineRepoModule {
 
-    @Provides
     @Singleton
-    fun providePokemon(retrofit: Retrofit): PokemonAPI {
-        return retrofit.create(PokemonAPI::class.java)
+    @Provides
+    fun provideOnlinePokeRepository(
+        pokemonAPI: PokemonAPI
+    ): OnlinePokeRepository {
+        return OnlinePokeRepository(pokemonAPI)
     }
 }

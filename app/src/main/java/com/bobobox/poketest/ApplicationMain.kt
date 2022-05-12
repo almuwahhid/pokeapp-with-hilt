@@ -6,17 +6,11 @@ import androidx.multidex.MultiDex
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class App : Application() {
-
-    companion object {
-        @JvmStatic
-        lateinit var instance: App
-            private set
-    }
+class ApplicationMain : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        instance = this
+        MultiDex.install(this)
     }
 
     override fun attachBaseContext(base: Context?) {
